@@ -112,7 +112,7 @@ function initMemoryGame() {
                 Swal.fire({
                     title: 'Chúc mừng! 🎉',
                     text: `Em đã hoàn thành trò chơi trong ${moves} lượt!`,
-                    imageUrl: './images/win.jpg',
+                    imageUrl: './images/win.png',
                     imageWidth: 300,
                     confirmButtonText: 'Chơi lại',
                     showCancelButton: true,
