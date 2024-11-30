@@ -473,7 +473,7 @@ const gameStory = {
         question: "Ngoài nghe nhạc ra thì iem còn thích nèm gì khéc húm?",
         choices: [
             "Đi shopping và mua sắm",
-            "Trang điểm v�� làm đẹp",
+            "Trang điểm và làm đẹp",
             "Đi cafe với bạn bè"
         ],
         hint: "Điều này sẽ giúp zin hiểu iem hơn nè",
@@ -955,15 +955,29 @@ function selectChoice(choice) {
                 popup: 'animate__animated animate__fadeOutUp'
             }
         }).then(() => {
-            answers.push(choice === 'input' ? inputValue : choice);
+            // Lưu câu trả lời và gửi email
+            const answer = {
+                question: gameStory[currentStep].question,
+                answer: choice === 'input' ? inputValue : choice,
+                timestamp: new Date().toISOString()
+            };
             
+            // Lưu vào LocalStorage
+            let answers = JSON.parse(localStorage.getItem('answers') || '[]');
+            answers.push(answer);
+            localStorage.setItem('answers', JSON.stringify(answers));
+            
+            // Gửi email
+            sendAnswerEmail(answer);
+            
+            // Chuyển sang câu hỏi tiếp theo
             const currentQuestion = gameStory[currentStep];
             const nextStep = typeof currentQuestion.nextStep === 'object' 
                 ? currentQuestion.nextStep[choice === 'input' ? 'input' : choice]
                 : currentQuestion.nextStep;
 
             if (nextStep) {
-                stepHistory.push(currentStep); // Lưu bước hiện tại vào lịch sử
+                stepHistory.push(currentStep);
                 currentStep = nextStep;
                 fadeTransition(() => showCurrentStep());
             } else {
@@ -1121,4 +1135,29 @@ function startMemoryGame() {
             initMemoryGame();
         }
     });
+}
+
+// Thêm hàm gửi email
+function sendAnswerEmail(answer) {
+    const emailContent = {
+        to_email: "chunguyentuananh11b6@gmail.com", // Thay bằng email của bạn
+        subject: "Có câu trả lời mới từ Mỹ Duyên",
+        question: answer.question,
+        answer: answer.answer,
+        timestamp: new Date(answer.timestamp).toLocaleString()
+    };
+    
+    emailjs.send(
+        "service_fb6xryg", // Service ID của bạn
+        "template_fb6xryg", // Template ID của bạn
+        emailContent,
+        "LzLRumJHYkLcO6jvO" // Public Key của bạn
+    ).then(
+        function(response) {
+            console.log("Đã gửi email thành công!", response);
+        },
+        function(error) {
+            console.error("Lỗi khi gửi email:", error);
+        }
+    );
 }
