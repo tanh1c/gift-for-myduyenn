@@ -31,6 +31,7 @@ function initMemoryGame() {
         cards = [];
         // Tạo các cặp thẻ
         for (let i = 0; i < TOTAL_PAIRS; i++) {
+            console.log('Loading image:', cardImages[i]); // Debug log
             for (let j = 0; j < 2; j++) {
                 cards.push({
                     id: `card-${i}-${j}`,
