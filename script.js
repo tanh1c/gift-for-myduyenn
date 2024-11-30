@@ -283,7 +283,7 @@ const gameStory = {
     },
     fashion_style_bag_mini: {
         type: "puzzle",
-        question: "Zinn đoán nà iem vừa chọn túi xách mini đún hum hehe, vậy iem thích hãng túi xách mini nèo nè?",
+        question: "Zinn đoán nà iem vừa chọn t��i xách mini đún hum hehe, vậy iem thích hãng túi xách mini nèo nè?",
         choices: [
             {
                 text: "Charles & Keith 🤩",
@@ -939,21 +939,31 @@ function selectChoice(choice) {
                 popup: 'animate__animated animate__fadeOutUp'
             }
         }).then(() => {
-            // Lưu câu trả lời và gửi email
+            // Lưu câu trả lời
             const answer = {
                 question: gameStory[currentStep].question,
                 answer: choice === 'input' ? inputValue : choice,
                 timestamp: new Date().toISOString()
             };
-            
-            // Lưu vào LocalStorage
-            let answers = JSON.parse(localStorage.getItem('answers') || '[]');
-            answers.push(answer);
-            localStorage.setItem('answers', JSON.stringify(answers));
-            
-            // Gửi email
-            sendAnswerEmail(answer);
-            
+
+            // Gửi email thông báo
+            try {
+                emailjs.send(
+                    "service_fb6xryg",
+                    "template_fb6xryg",
+                    {
+                        to_email: "chunguyentuananh11b6@gmail.com",
+                        subject: "Có câu trả lời mới từ Mỹ Duyên",
+                        question: answer.question,
+                        answer: answer.answer,
+                        timestamp: answer.timestamp
+                    },
+                    "LzLRumJHYkLcO6jvO"
+                );
+            } catch (error) {
+                console.error("Lỗi gửi email:", error);
+            }
+
             // Chuyển sang câu hỏi tiếp theo
             const currentQuestion = gameStory[currentStep];
             const nextStep = typeof currentQuestion.nextStep === 'object' 
