@@ -913,7 +913,7 @@ function selectChoice(choice) {
         );
     }
     
-    if (!selectedChoice) return; // Kiểm tra nếu không tìm thấy lựa chọn
+    if (!selectedChoice) return;
     
     // Vô hiệu hóa tất cả các lựa chọn
     choices.forEach(choice => {
@@ -923,22 +923,6 @@ function selectChoice(choice) {
     // Thêm hiệu ứng đáp án đúng
     selectedChoice.classList.add('correct');
     playCorrectSound();
-    
-    // Thêm phần lưu câu trả lời
-    const answer = {
-        question: gameStory[currentStep].question,
-        answer: choice === 'input' ? inputValue : choice,
-        timestamp: new Date().toISOString()
-    };
-
-    // Lưu vào Firebase
-    db.collection('answers').add(answer)
-        .then(() => {
-            console.log('Đã lưu câu trả lời');
-        })
-        .catch((error) => {
-            console.error('Lỗi khi lưu:', error);
-        });
     
     setTimeout(() => {
         Swal.fire({
