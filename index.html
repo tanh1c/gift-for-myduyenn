@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Món quà sinh nhật cho em</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <audio id="correctSound" src="sounds/correct.mp3" preload="auto"></audio>
+    <audio id="backgroundMusic" src="sounds/background.mp3" preload="auto" loop></audio>
+    <div class="sparkles" id="sparkles"></div>
+    <div id="bubbles"></div>
+
+    <div class="gift-container">
+        <div class="bubble-container" id="bubbleContainer"></div>
+        <div class="sparkle-container" id="sparkleContainer"></div>
+        <div class="welcome-text">
+            <h1>✨ Chào mừn bé Mỹ Duyên! ✨</h1>
+            <p>Hãy nhấp vào hộp quà này nhé 💝</p>
+        </div>
+        <div class="floating-hearts" id="floatingHearts"></div>
+        <div class="gift-box" id="giftBox">
+            <div class="gift-lid">
+                <div class="sparkle">
+                    <span style="top: 20%; left: 20%"></span>
+                    <span style="top: 60%; left: 80%"></span>
+                    <span style="top: 40%; left: 50%"></span>
+                    <span style="top: 80%; left: 30%"></span>
+                    <span style="top: 10%; left: 90%"></span>
+                </div>
+            </div>
+            <div class="gift-base">
+                <div class="sparkle">
+                    <span style="top: 30%; left: 40%"></span>
+                    <span style="top: 70%; left: 60%"></span>
+                    <span style="top: 50%; left: 30%"></span>
+                    <span style="top: 20%; left: 80%"></span>
+                    <span style="top: 90%; left: 20%"></span>
+                </div>
+            </div>
+            <div class="gift-ribbon"></div>
+            <div class="gift-label">Nhấp vào ở ây bé úi</div>
+        </div>
+    </div>
+
+    <div class="container hidden" id="mainContainer">
+        <div class="photo-memory" id="couplePhoto">
+            <img src="./images/pic1.jpg" alt="Kỷ niệm đẹp">
+            <div class="photo-frame"></div>
+            <div class="photo-label">Kỷ niệm của chúng mình 💕</div>
+        </div>
+
+        <div class="quiz-container">
+            <div id="question" class="question"></div>
+            <div id="choices" class="choices"></div>
+        </div>
+        <div id="result" class="result hidden">
+            <h2>✨ Cảm ơn em đã chơi cùng anh! ✨</h2>
+            <p>Anh đã hiểu được nhiều điều thú vị về em rồi đấy!</p>
+            <p>Nếu iem mún tìm hỉu hoặc mún thay đổi sự lựa chọn thì hãy ấn quay lại nhoa hehe</p>
+            <p>Hãy đợi zin nhé, anh sẽ có một bất ngờ dành cho iem... 💝</p>
+            <div class="final-hearts">💖 💝 💖</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="puzzle.js"></script>
+    <script src="memory.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
+</body>
+</html>
