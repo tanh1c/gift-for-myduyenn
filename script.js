@@ -949,8 +949,8 @@ function selectChoice(choice) {
             // Gửi email thông báo
             try {
                 emailjs.send(
-                    "service_fb6xryg",
-                    "template_fb6xryg",
+                    "service_2wyz7b4",
+                    "template_s6hpwtf",
                     {
                         to_email: "chunguyentuananh11b6@gmail.com",
                         subject: "Có câu trả lời mới từ Mỹ Duyên",
@@ -1134,8 +1134,8 @@ function startMemoryGame() {
 // Thêm hàm gửi email
 function sendAnswerEmail(answer) {
     const emailContent = {
-        service_id: "service_fb6xryg",
-        template_id: "template_fb6xryg",
+        service_id: "service_2wyz7b4",
+        template_id: "template_s6hpwtf",
         user_id: "LzLRumJHYkLcO6jvO",
         template_params: {
             to_email: "chunguyentuananh11b6@gmail.com",
