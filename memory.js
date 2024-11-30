@@ -10,8 +10,8 @@ function initMemoryGame() {
 
     // Danh sách ảnh cho các cặp thẻ
     const cardImages = [
-        './images/pic1.jpg', './images/pic2.jpg', './images/pic3.jpg', './images/pic4.jpg',
-        './images/pic5.jpg', './images/pic6.jpg', './images/pic7.jpg', './images/pic8.jpg'
+        './images/pic23.jpg', './images/pic24.jpg', './images/pic25.jpg', './images/pic26.jpg',
+        './images/pic27.jpg', './images/pic28.jpg', './images/pic29.jpg', './images/pic30.jpg'
     ];
 
     // Tạo giao diện game
